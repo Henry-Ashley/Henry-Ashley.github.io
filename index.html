@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Henry Ashley — Mathematics PhD Candidate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111827;
+  --muted:#6b7280;
+  --faint:#9ca3af;
+  --rule:#e5e7eb;
+  --accent:#1e3a5f;
+  --accent-light:#dbeafe;
+  --page:#fafaf9;
+  --card:#ffffff;
+  --serif:'EB Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;font-weight:300}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,250,249,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:0 2rem}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-name{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--accent);letter-spacing:0.01em;text-decoration:none}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:0.85rem;color:var(--muted);text-decoration:none;letter-spacing:0.02em;font-weight:400;transition:color 0.18s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:5rem 2rem 4rem}
+.hero-label{font-size:0.78rem;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;font-weight:500;margin-bottom:1rem}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,4.2rem);font-weight:500;line-height:1.1;color:var(--ink);margin-bottom:1.25rem}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:2rem;font-weight:300}
+.hero-contact{display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.88rem}
+.hero-contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);padding-bottom:1px;transition:border-color 0.18s}
+.hero-contact a:hover{border-color:var(--accent)}
+.hero-contact span{color:var(--faint)}
+
+/* SECTION */
+section{max-width:900px;margin:0 auto;padding:3.5rem 2rem}
+.section-label{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:0.5rem}
+.section-rule{height:1px;background:var(--rule);margin-bottom:2.5rem}
+h2{font-family:var(--serif);font-size:1.85rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem}
+
+/* RESEARCH CARD */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:0.5rem}
+.r-card{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color 0.2s}
+.r-card:hover{border-color:#93c5fd}
+.r-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);border-radius:10px 10px 0 0}
+.r-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:0.75rem;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:0.85rem;letter-spacing:0.02em}
+.r-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:500;line-height:1.4;margin-bottom:0.6rem}
+.r-card p{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+/* PUBLICATIONS */
+.pub-list{display:flex;flex-direction:column;gap:1.75rem}
+.pub{display:grid;grid-template-columns:56px 1fr;gap:0 1.25rem}
+.pub-year{font-family:var(--serif);font-size:1.1rem;color:var(--faint);font-weight:400;padding-top:2px;text-align:right}
+.pub-body{}
+.pub-title{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:0.25rem;line-height:1.45}
+.pub-authors{font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem}
+.pub-authors strong{color:var(--ink);font-weight:500}
+.pub-venue{font-size:0.85rem;color:var(--muted);font-style:italic;margin-bottom:0.4rem}
+.pub-link{font-size:0.8rem;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);padding-bottom:1px;font-weight:400}
+.pub-link:hover{border-color:var(--accent)}
+
+/* ABSTRACT TOGGLE */
+details summary{font-size:0.8rem;color:var(--muted);cursor:pointer;margin-top:0.4rem;list-style:none;display:inline-flex;align-items:center;gap:0.3rem;user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:'▶';font-size:0.65rem;transition:transform 0.2s}
+details[open] summary::before{transform:rotate(90deg)}
+details p{font-size:0.85rem;color:var(--muted);line-height:1.65;margin-top:0.6rem;padding:0.85rem 1rem;background:#f8fafc;border-left:2px solid #93c5fd;border-radius:0 6px 6px 0}
+
+/* TALKS */
+.talk-list{display:flex;flex-direction:column;gap:0}
+.talk{display:grid;grid-template-columns:56px 1fr;gap:0 1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.talk:last-child{border-bottom:none}
+.talk-date{font-size:0.78rem;color:var(--faint);font-weight:400;padding-top:3px;text-align:right;line-height:1.4}
+.talk-title{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;line-height:1.4}
+.talk-meta{font-size:0.85rem;color:var(--muted)}
+.talk-meta em{color:var(--accent);font-style:normal;font-weight:400}
+
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:0}
+.edu{display:grid;grid-template-columns:1fr auto;gap:0 2rem;padding:1.25rem 0;border-bottom:1px solid var(--rule);align-items:start}
+.edu:last-child{border-bottom:none}
+.edu-degree{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem}
+.edu-school{font-size:0.88rem;color:var(--muted)}
+.edu-note{font-size:0.82rem;color:var(--faint);margin-top:0.2rem}
+.edu-gpa{font-size:0.82rem;color:var(--muted);text-align:right;white-space:nowrap;padding-top:3px}
+.edu-date{font-size:0.82rem;color:var(--faint);text-align:right;margin-top:2px}
+
+/* AWARDS */
+.award-list{display:flex;flex-direction:column;gap:0.85rem;margin-top:0.5rem}
+.award{display:flex;gap:0.85rem;align-items:flex-start}
+.award-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:0.6rem;flex-shrink:0}
+.award-text{font-size:0.93rem;color:var(--ink)}
+.award-text span{color:var(--muted);font-size:0.85rem;display:block}
+
+/* FOOTER */
+footer{border-top:1px solid var(--rule);padding:2rem;text-align:center;font-size:0.82rem;color:var(--faint)}
+
+@media(max-width:600px){
+  .pub{grid-template-columns:1fr}.pub-year{text-align:left;padding-bottom:0.25rem}
+  .talk{grid-template-columns:1fr}.talk-date{text-align:left}
+  .edu{grid-template-columns:1fr}.edu-gpa,.edu-date{text-align:left}
+  .nav-links{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#">Henry Ashley</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <p class="hero-label">Mathematics · Topological Data Analysis</p>
+  <h1>Henry Ashley</h1>
+  <p class="hero-sub">PhD candidate at the University at Albany, SUNY, working at the intersection of applied topology, combinatorics, and data analysis.</p>
+  <div class="hero-contact">
+    <a href="mailto:hashley@albany.edu">hashley@albany.edu</a>
+    <span>·</span>
+    <a href="https://doi.org/10.48550/arXiv.2602.09011" target="_blank">arXiv</a>
+    <span>·</span>
+    <span>Albany, NY</span>
+  </div>
+</div>
+
+<section id="research">
+  <p class="section-label">Research</p>
+  <div class="section-rule"></div>
+  <div class="research-grid">
+    <div class="r-card">
+      <span class="r-tag">Topological Data Analysis</span>
+      <h3>Persistent Homology & Betti Curves</h3>
+      <p>Studying inverse problems in TDA: how many barcodes produce the same Betti curve? Connecting persistent homology to Kostant's partition function and enumerative combinatorics of juggling sequences.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-tag">Computational Complexity</span>
+      <h3>Interleaving Distance</h3>
+      <p>Investigating the computational complexity of data structures used in TDA, including merge trees and Reeb graphs, with results showing NP-completeness and GI-completeness of key distance computations.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-tag">Applied Mathematics</span>
+      <h3>Satellite Calibration</h3>
+      <p>Earlier work developing a MATLAB framework (ACCURACY) for intercalibrating CubeSat satellite radiometers, implementing incremental clustering algorithms for constellation-scale data.</p>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <p class="section-label">Publications &amp; Preprints</p>
+  <div class="section-rule"></div>
+  <div class="pub-list">
+
+    <div class="pub">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Counting Barcodes with the same Betti Curve</div>
+        <div class="pub-authors"><strong>H. Ashley</strong>, H. B. Bjerkevik, J. Curry, R. Decker, R. Green</div>
+        <div class="pub-venue">arXiv preprint · 10.48550/arXiv.2602.09011</div>
+        <a class="pub-link" href="https://doi.org/10.48550/arXiv.2602.09011" target="_blank">arXiv →</a>
+        <details>
+          <summary>Abstract</summary>
+          <p>This paper considers an important inverse problem in TDA: how many different barcodes produce the same Betti curve? Our answer connects persistent homology to Kostant's partition function and, surprisingly, to enumerative combinatorics for so-called "magic" juggling sequences studied by Ronald Graham and others—proving an equivalence between the inverse problem and corresponding statements in these two other settings. From an applications perspective, the work provides a quantification of how lossy the TDA pipeline is when moving from persistent homology to persistent Betti numbers.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">ACCURACY: A Novel Calibration Framework for CubeSat Radiometer Constellations</div>
+        <div class="pub-authors">J. Bradburn, M. Aksoy, L. Apudo, V. Vukolov, <strong>H. Ashley</strong>, D. VanAllen</div>
+        <div class="pub-venue">Remote Sensing, 17(3), 486</div>
+        <a class="pub-link" href="https://doi.org/10.3390/rs17030486" target="_blank">DOI →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="talks">
+  <p class="section-label">Talks &amp; Presentations</p>
+  <div class="section-rule"></div>
+  <div class="talk-list">
+
+    <div class="talk">
+      <div class="talk-date">Mar 2026</div>
+      <div>
+        <div class="talk-title">Computational Complexity of the Interleaving Distance</div>
+        <div class="talk-meta"><em>Applied Topologists in Albany (ATiA) Seminar</em> · University at Albany, SUNY · March 6, 2026</div>
+        <details>
+          <summary>Abstract</summary>
+          <p>This talk discusses the computational complexity of several data structures used in topological data analysis, particularly merge trees and Reeb graphs. Proofs by Bjerkevik, Botnan, Dey, Erickson, and others establish that computing the interleaving distance between merge trees and between Reeb graphs is NP-complete, computing isomorphism between Reeb graphs is GI-complete, and computing isomorphism between merge trees can be done in linear time.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="talk">
+      <div class="talk-date">Jul 2025</div>
+      <div>
+        <div class="talk-title">Counting Barcodes with the same Betti Curve</div>
+        <div class="talk-meta"><em>Algebraic Topology: Methods, Computation &amp; Science (ATMCS 11)</em> · Joint talk with Håvard Bakke Bjerkevik · July 25, 2025</div>
+        <details>
+          <summary>Abstract</summary>
+          <p>This paper considers an important inverse problem in TDA: how many different barcodes produce the same Betti curve? Our answer connects persistent homology to Kostant's partition function and to enumerative combinatorics for so-called "magic" juggling sequences studied by Ronald Graham and others—proving an equivalence between the inverse problem and corresponding statements in these two settings. The work provides a quantification of how lossy the TDA pipeline is when moving from persistent homology to persistent Betti numbers.</p>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <p class="section-label">Education</p>
+  <div class="section-rule"></div>
+  <div class="edu-list">
+    <div class="edu">
+      <div>
+        <div class="edu-degree">PhD in Mathematics</div>
+        <div class="edu-school">University at Albany, State University of New York</div>
+        <div class="edu-note">Research focus: Topological Data Analysis</div>
+      </div>
+      <div>
+        <div class="edu-gpa">GPA 3.91 / 4.00</div>
+        <div class="edu-date">In progress</div>
+      </div>
+    </div>
+    <div class="edu">
+      <div>
+        <div class="edu-degree">Master of Arts in Mathematics</div>
+        <div class="edu-school">University at Albany, State University of New York</div>
+      </div>
+      <div>
+        <div class="edu-gpa">GPA 3.91 / 4.00</div>
+        <div class="edu-date">August 2025</div>
+      </div>
+    </div>
+    <div class="edu">
+      <div>
+        <div class="edu-degree">Bachelor of Science in Physics &amp; Mathematics</div>
+        <div class="edu-school">University at Albany, State University of New York</div>
+      </div>
+      <div>
+        <div class="edu-gpa">GPA 4.00 / 4.00</div>
+        <div class="edu-date">May 2023</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem">
+    <p class="section-label" style="margin-bottom:0.5rem">Awards &amp; Honors</p>
+    <div class="section-rule"></div>
+    <div class="award-list">
+      <div class="award">
+        <div class="award-dot"></div>
+        <div class="award-text">UAlbany President's Award for Leadership — Outstanding Senior Award<span>2023</span></div>
+      </div>
+      <div class="award">
+        <div class="award-dot"></div>
+        <div class="award-text">"Best Student Talk" — UAlbany PASCAL Annual Research Conference</div>
+      </div>
+      <div class="award">
+        <div class="award-dot"></div>
+        <div class="award-text">Excellence in Undergraduate Research Award — $1,000 stipend<span>2021–2022</span></div>
+      </div>
+      <div class="award">
+        <div class="award-dot"></div>
+        <div class="award-text">Salutatorian, Loudonville Christian School<span>2019 · GPA 3.97 / 4.00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Henry Ashley · University at Albany, SUNY · <a href="mailto:hashley@albany.edu" style="color:inherit">hashley@albany.edu</a>
+</footer>
+
+</body>
+</html>
